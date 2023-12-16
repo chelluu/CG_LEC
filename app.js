@@ -31,26 +31,42 @@ let init = () => {
     document.body.appendChild(renderer.domElement)
 }
 
-let sky = () => {
-    geo = new THREE.BoxGeometry(1500, 1500, 1500)
+var skybox = () => {
+    var skyboxGeo = new THREE.BoxGeometry(1000,1000,1000);
 
-    const ft = new THREE.TextureLoader().load("./Assets/cloudy/bluecloud_ft.jpg")
-    const bk = new THREE.TextureLoader().load("./Assets/cloudy/bluecloud_bk.jpg")
-    const up = new THREE.TextureLoader().load("./Assets/cloudy/bluecloud_up.jpg")
-    const dn = new THREE.TextureLoader().load("./Assets/cloudy/bluecloud_dn.jpg")
-    const rt = new THREE.TextureLoader().load("./Assets/cloudy/bluecloud_rt.jpg")
-    const lf = new THREE.TextureLoader().load("./Assets/cloudy/bluecloud_lf.jpg")
+    var textureLoader = new THREE.TextureLoader();
 
-    const materials = [
-        new THREE.MeshBasicMaterial({ map: rt, side: THREE.BackSide }), // right
-        new THREE.MeshBasicMaterial({ map: lf, side: THREE.BackSide }), // left
-        new THREE.MeshBasicMaterial({ map: up, side: THREE.BackSide }), // top
-        new THREE.MeshBasicMaterial({ map: dn, side: THREE.BackSide }), // bottom
-        new THREE.MeshBasicMaterial({ map: ft, side: THREE.BackSide }), // front
-        new THREE.MeshBasicMaterial({ map: bk, side: THREE.BackSide })  // back
+    var skyboxMaterials = [
+        new THREE.MeshBasicMaterial ({
+            map: textureLoader.load('./Assets/skybox/nightsky_rt.png'),
+            side: THREE.BackSide
+        }),
+        new THREE.MeshBasicMaterial ({
+            map: textureLoader.load('./Assets/skybox/nightsky_lf.png'),
+            side: THREE.BackSide
+        }),
+        new THREE.MeshBasicMaterial ({
+            map: textureLoader.load('./Assets/skybox/nightsky_up.png'),
+            side: THREE.BackSide
+        }),
+        new THREE.MeshBasicMaterial ({
+            map: textureLoader.load('./Assets/skybox/nightsky_dn.png'),
+            side: THREE.BackSide
+        }),
+        new THREE.MeshBasicMaterial ({
+            map: textureLoader.load('./Assets/skybox/nightsky_ft.png'),
+            side: THREE.BackSide
+        }),
+        new THREE.MeshBasicMaterial ({
+            map: textureLoader.load('./Assets/skybox/nightsky_bk.png'),
+            side: THREE.BackSide
+        }),
     ]
-    mesh = new THREE.Mesh(geo, materials)
-    scene.add(mesh)
+
+    var skyboxMesh = new THREE.Mesh(skyboxGeo,skyboxMaterials)
+    skyboxMesh.position.set(0,0,0);
+
+    scene.add(skyboxMesh)
 }
 
 const castle = () => {
@@ -67,6 +83,7 @@ const castle = () => {
                 child.receiveShadow = true
             }
         });
+        root.position.set(0,0,0)
         scene.add(root)
     });
 }
@@ -119,7 +136,7 @@ let spotLight = () => {
 
 window.onload = () => {
     init();
-    sky();
+    skybox();
     castle();
     // dragon();
 
