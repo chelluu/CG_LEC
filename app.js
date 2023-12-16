@@ -88,6 +88,25 @@ const castle = () => {
     });
 }
 
+
+var models = () => {
+    loader.load(
+        './Assets/snow-dragon/source/dragon_white_low_poly/scene.gltf',
+    (object)=> {
+        let model = object.scene
+        model.scale.set(20,20,20)
+
+        mixer = new THREE.AnimationMixer(model);
+
+        const action = mixer.clipAction(object.animations[3]);
+        action.play();
+        model.position.set(30,0,0);
+
+        scene.add(model)
+    }
+    )
+}
+
 const dragon = () => {
     loader.load("./Assets/dragon/scene.gltf", function(gltf){
         // console.log(gltf)
@@ -108,6 +127,9 @@ const dragon = () => {
 }
 
 let render = () => {
+    if(mixer){
+        mixer.update(clock.getDelta())
+    }
     requestAnimationFrame(render)
     controls.update()
     renderer.render(scene, camera)
@@ -138,6 +160,7 @@ window.onload = () => {
     init();
     skybox();
     castle();
+    models();
     // dragon();
 
     hemisLight();
