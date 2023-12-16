@@ -114,23 +114,25 @@ let render = () => {
 }
 
 let hemisLight = () => {
-    const light = new THREE.HemisphereLight(0xFFFFFC, 0x080820, 2)
+    const light = new THREE.HemisphereLight(0x00468B, 0x080820, 1)
     scene.add(light)
     light.position.set(0,0,0)
     light.castShadow = true
 }
 
 let ambientLight = () => {
-    const light = new THREE.AmbientLight(0xFFFFFC, 1)
+    const light = new THREE.AmbientLight(0x00008B, 1)
     scene.add(light)
     light.position.set(0,0,0)
     light.castShadow = true
 }
 
 let spotLight = () => {
-    const light = new THREE.SpotLight(0xFFFFFF, 10) //day
+    const light = new THREE.SpotLight(0xFFFFFC, 3)
     scene.add(light)
-    light.position.set(-80,40,0)
+    light.position.set(100, 80, 150)
+    const helper = new THREE.SpotLightHelper(light, 1)
+    // scene.add(helper)
     light.castShadow = true
 }
 
@@ -146,11 +148,11 @@ window.onload = () => {
     render();
 }
 
-// window.onrensize = () => {
-//     let w = window.innerWidth
-//     let h = window.innerHeight
+window.onrensize = () => {
+    let w = window.innerWidth
+    let h = window.innerHeight
 
-//     renderer.setSize(w, h)
-//     camera.aspect = w/h
-//     camera.updateProjectionMatrix()
-// }
+    renderer.setSize(w, h)
+    camera.aspect = w/h
+    camera.updateProjectionMatrix()
+}
