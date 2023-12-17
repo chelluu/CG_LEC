@@ -107,24 +107,24 @@ var models = () => {
     )
 }
 
-const dragon = () => {
-    loader.load("./Assets/dragon/scene.gltf", function(gltf){
-        // console.log(gltf)
-        const root = gltf.scene
-        root.scale.set(80,80,80)
-        // root.position.set(0,150,-400)
-        // root.rotateY(-45)
-        root.castShadow = true
-        root.receiveShadow = true
-        root.traverse(function(child){
-            if(child.isMesh){
-                child.castShadow = true
-                child.receiveShadow = true
-            }
-        });
-        scene.add(root)
-    });
-}
+// const dragon = () => {
+//     loader.load("./Assets/dragon/scene.gltf", function(gltf){
+//         // console.log(gltf)
+//         const root = gltf.scene
+//         root.scale.set(80,80,80)
+//         // root.position.set(0,150,-400)
+//         // root.rotateY(-45)
+//         root.castShadow = true
+//         root.receiveShadow = true
+//         root.traverse(function(child){
+//             if(child.isMesh){
+//                 child.castShadow = true
+//                 child.receiveShadow = true
+//             }
+//         });
+//         scene.add(root)
+//     });
+// }
 
 let render = () => {
     if(mixer){
@@ -171,7 +171,7 @@ window.onload = () => {
     render();
 }
 
-window.onrensize = () => {
+window.onresize = () => {
     let w = window.innerWidth
     let h = window.innerHeight
 
