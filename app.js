@@ -163,9 +163,9 @@ let ambientLight = () => {
 let spotLight = () => {
     const light = new THREE.SpotLight(0xFFFFFC, 3)
     scene.add(light)
-    light.position.set(100, 80, 150)
+    light.position.set(100, 100, 300)
     const helper = new THREE.SpotLightHelper(light, 1)
-    // scene.add(helper)
+    scene.add(helper)
     light.castShadow = true
 }
 
