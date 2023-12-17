@@ -165,7 +165,7 @@ let spotLight = () => {
     scene.add(light)
     light.position.set(100, 100, 300)
     const helper = new THREE.SpotLightHelper(light, 1)
-    scene.add(helper)
+    // scene.add(helper)
     light.castShadow = true
 }
 
