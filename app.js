@@ -27,6 +27,7 @@ let init = () => {
     renderer.shadowMap.enabled = true
 
     controls = new OrbitControls(camera, renderer.domElement)
+    controls.autoRotate = true
 
     document.body.appendChild(renderer.domElement)
 }
@@ -88,24 +89,7 @@ const castle = () => {
     });
 }
 
-const dragon = () => {
-    loader.load("./Assets/dragon/scene.gltf", function(gltf){
-        // console.log(gltf)
-        const root = gltf.scene
-        root.scale.set(80,80,80)
-        // root.position.set(0,150,-400)
-        // root.rotateY(-45)
-        root.castShadow = true
-        root.receiveShadow = true
-        root.traverse(function(child){
-            if(child.isMesh){
-                child.castShadow = true
-                child.receiveShadow = true
-            }
-        });
-        scene.add(root)
-    });
-}
+
 
 let render = () => {
     requestAnimationFrame(render)
@@ -140,7 +124,6 @@ window.onload = () => {
     init();
     skybox();
     castle();
-    // dragon();
 
     hemisLight();
     ambientLight();
