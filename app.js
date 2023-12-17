@@ -10,6 +10,7 @@ let currentAnimationIndex = 0
 const loader = new GLTFLoader()
 
 let init = () => {
+    clock = new THREE.Clock();
     scene = new THREE.Scene()
 
     let fov = 75
@@ -171,7 +172,7 @@ window.onload = () => {
     render();
 }
 
-window.onrensize = () => {
+window.onresize = () => {
     let w = window.innerWidth
     let h = window.innerHeight
 
