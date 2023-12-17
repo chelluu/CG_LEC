@@ -140,6 +140,7 @@ window.onload = () => {
     init();
     skybox();
     castle();
+    models();
 
     hemisLight();
     ambientLight();
