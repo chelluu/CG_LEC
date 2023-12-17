@@ -85,7 +85,36 @@ const castle = () => {
                 child.receiveShadow = true
             }
         });
-        root.position.set(0,0,0)
+        scene.add(root)
+    });
+}
+
+const cloudRing = () => {
+    loader.load("./Assets/cloud_ring/scene.gltf", function(gltf){
+        // console.log(gltf)
+        const root = gltf.scene
+        root.scale.set(50,50,50)
+        root.position.set(0,-50,0)
+        scene.add(root)
+    });
+}
+
+const cloud = () => {
+    loader.load("./Assets/cloud/scene.gltf", function(gltf){
+        // console.log(gltf)
+        const root = gltf.scene
+        root.scale.set(5,5,5)
+        root.position.set(30,60,0)
+        scene.add(root)
+    });
+}
+
+const cloud2 = () => {
+    loader.load("./Assets/cloud/scene.gltf", function(gltf){
+        // console.log(gltf)
+        const root = gltf.scene
+        root.scale.set(8,5,5)
+        root.position.set(-90,80,20)
         scene.add(root)
     });
 }
@@ -145,6 +174,10 @@ window.onload = () => {
     skybox();
     castle();
     models();
+
+    cloudRing();
+    // cloud();
+    // cloud2();
 
     hemisLight();
     ambientLight();
