@@ -88,6 +88,7 @@ const castle = () => {
     });
 }
 
+<<<<<<< HEAD
 
 var models = () => {
     loader.load(
@@ -125,11 +126,28 @@ var models = () => {
 //         scene.add(root)
 //     });
 // }
+=======
+const dragon = () => {
+    loader.load("./Assets/dragon/scene.gltf", function(gltf){
+        // console.log(gltf)
+        const root = gltf.scene
+        root.scale.set(80,80,80)
+        // root.position.set(0,150,-400)
+        // root.rotateY(-45)
+        root.castShadow = true
+        root.receiveShadow = true
+        root.traverse(function(child){
+            if(child.isMesh){
+                child.castShadow = true
+                child.receiveShadow = true
+            }
+        });
+        scene.add(root)
+    });
+}
+>>>>>>> parent of 147adf4 (updoot wuhu)
 
 let render = () => {
-    if(mixer){
-        mixer.update(clock.getDelta())
-    }
     requestAnimationFrame(render)
     controls.update()
     renderer.render(scene, camera)
@@ -162,7 +180,6 @@ window.onload = () => {
     init();
     skybox();
     castle();
-    models();
     // dragon();
 
     hemisLight();
