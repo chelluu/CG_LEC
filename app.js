@@ -5,9 +5,10 @@ import {AnimationMixer} from 'three'
 
 let scene, camera, cameraPOV, renderer, controls
 let geo, mat, mesh
-let mixer, clips = [], clock
+let mixer, clips = []
 let currentAnimationIndex = 0
 const loader = new GLTFLoader()
+const clock = new THREE.Clock();
 
 let init = () => {
     scene = new THREE.Scene()
@@ -108,6 +109,9 @@ var models = () => {
 }
 
 let render = () => {
+    if(mixer){
+        mixer.update(clock.getDelta())
+    }
     requestAnimationFrame(render)
     controls.update()
     renderer.render(scene, camera)
