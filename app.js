@@ -89,9 +89,10 @@ const castle = () => {
     });
 }
 
-
-
 let render = () => {
+    if(mixer){
+        mixer.update(clock.getDelta())
+    }
     requestAnimationFrame(render)
     controls.update()
     renderer.render(scene, camera)
@@ -131,7 +132,7 @@ window.onload = () => {
     render();
 }
 
-window.onrensize = () => {
+window.onresize = () => {
     let w = window.innerWidth
     let h = window.innerHeight
 
